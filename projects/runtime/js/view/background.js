@@ -27,7 +27,9 @@ var background = function (window) {
         
         // ANIMATION VARIABLES HERE:
         var tree;
+        var building;
         var buildings = [];
+
         // called at the start of game and whenever the page is resized
         // add objects for display in background. draws each image added to the background once
         function render() {
@@ -58,19 +60,19 @@ var background = function (window) {
 
             
             // TODO 5: Part 1 - Add buildings!     Q: This is before TODO 4 for a reason! Why?
-            for(var i=0; i<5; ++i) {
-                var buildingHeight = Math.random() * 600;
-                    if (buildingHeight <= 250) {
-                        buildingHeight +=100;              
-                    }
-
-                var buildingColors = ["Blue", "Red", "Brown", "Green", "White", "Yellow"];
-                var buildingDifferentHeights = [175, 135, 100, 190, 240];
-                var building = draw.rect(75,buildingHeight,buildingColors[i], 'Blue',1);
+            var buildingColors = ["Blue", "Red", "Brown", "Green", "White", "Yellow"];
+            
+            for (var i = 0; i < 5; i++) {
+                var buildingHeight = Math.random() * 300;
+                building = draw.rect(75,buildingHeight,buildingColors[i], 'Blue',1);
                 building.x = 200*i;
-                building.y = groundY- buildingHeights;
+                building.y = groundY- buildingHeight;
                 background.addChild(building);
-                building.push(building);
+                buildings.push(building);
+                    if (buildingHeight < 200) {
+                        buildingHeight + 100;              
+                    }              
+               
             }
 
             // TODO 4: Part 1 - Add a tree
@@ -91,7 +93,7 @@ var background = function (window) {
             var groundY = ground.y;
             
             // TODO 4: Part 2 - Move the tree!
-            tree.x = tree.x - 50;
+            tree.x = tree.x - 10;
             if(tree.x < -200) {
                 tree.x = canvasWidth;
             }
