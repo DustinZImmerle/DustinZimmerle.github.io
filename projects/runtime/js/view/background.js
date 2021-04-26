@@ -93,7 +93,7 @@ var background = function (window) {
             var groundY = ground.y;
             
             // TODO 4: Part 2 - Move the tree!
-            tree.x = tree.x - 10;
+            tree.x = tree.x - 5;
             if(tree.x < -200) {
                 tree.x = canvasWidth;
             }
